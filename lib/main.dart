@@ -57,7 +57,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     }
   }
 
-  Widget _buildButton(String text, {Color color = Colors.blue}) {
+  Widget _buildButton(String text, {Color color = Colors.lightBlue}) {
     return ElevatedButton(
       onPressed: text == '='
           ? _calculate
@@ -67,7 +67,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       style: ElevatedButton.styleFrom(
         padding: EdgeInsets.all(20),
         textStyle: TextStyle(fontSize: 24),
-        backgroundColor: color,
+        backgroundColor: MaterialStateProperty.all(color), // Set button color here
       ),
       child: Text(text),
     );
@@ -137,6 +137,12 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               _buildButton('C', color: Colors.red),
               _buildButton('=', color: Colors.green),
               _buildButton('+', color: Colors.orange),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              _buildButton('%', color: Colors.orange), // Modulo button added here
             ],
           ),
         ],
